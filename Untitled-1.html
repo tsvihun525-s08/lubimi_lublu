@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> 💔</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+/* Приховуємо смугу прокрутки для Chrome, Safari, Edge */
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Firefox */
+body {
+  scrollbar-width: none; /* приховуємо смугу прокрутки */
+  -ms-overflow-style: none; /* для старих IE */
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(270deg, #1e1e2f, #2c2c44);
+  background-size: 400% 400%;
+  animation: bgMove 15s ease infinite;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow-y: auto; /* прокрутка доступна, але смуги не видно */
+  flex-direction: column;
+  padding: 10px;
+}
+
+@keyframes bgMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.container {
+  text-align: center;
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 22px;
+  backdrop-filter: blur(15px);
+  max-width: 95%;
+  max-height: 90vh;
+  overflow-y: auto; /* прокрутка всередині контейнера */
+  animation: fadeIn 2s ease;
+}
+
+/* Приховуємо прокрутку контейнера */
+.container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+.container {
+  scrollbar-width: none; 
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+#photoContainer {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 15px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid rgba(255,182,193,0.4);
+  box-shadow: 0 0 20px rgba(255,182,193,0.3);
+}
+
+#photoContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 { font-family: 'Great Vibes', cursive; font-size: 2em; margin-bottom: 8px; text-shadow: 2px 2px 10px rgba(255,182,193,0.3); }
+#time { font-family: 'Great Vibes', cursive; font-size: 1.3em; margin-bottom: 15px; opacity: 0.9; }
+#finalMessage { font-family: 'Great Vibes', cursive; font-size: 1.1em; line-height: 1.5; opacity: 0; transform: translateY(20px); animation: fadeInMessage 4s ease forwards; animation-delay: 1.5s; }
+#finalMessage p { margin: 12px 0; }
+.signature { font-size: 1.3em; margin-top: 10px; }
+
+@keyframes fadeInMessage {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивно для маленьких екранів */
+@media (max-height: 600px) {
+  h1 { font-size: 1.7em; }
+  #time { font-size: 1.1em; }
+  #finalMessage { font-size: 1em; }
+  #photoContainer { width: 120px; height: 120px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div id="photoContainer">
+    <img src="photo.JPG" alt="Фото">
+  </div>
+
+  <h1>Сонічка 🤍 Антоша</h1>
+
+  <div id="time"></div>
+
+  <div id="finalMessage">
+    <p>Ми закінчили 10 лютого… 💔<br>
+    Але моя любов до тебе не пропала. 🤍</p>
+
+    <p>Я багато думаю про тебе…<br>
+    Не з образою — з теплом.</p>
+
+    <p>І якщо в нас ще є шанс —<br>
+    я хочу ним скористатись.<br>
+    Я не хочу, щоб це був кінець.</p>
+
+    <p>Я інколи ловлю себе на спогадах про нас… ✨<br>
+    І вірю, що ти теж.</p>
+
+    <p>Давай спробуємо ще раз.<br>
+    По-справжньому. По-новому — як усе і починалось. 💫<br>
+    Без образ.</p>
+
+    <p>Скучаю за нами… 🫶</p>
+
+    <p class="signature">Просто ми. 🤍</p>
+  </div>
+
+</div>
+
+<script>
+// Дата початку та кінця
+const startDate = new Date(2025, 8, 25, 22, 54, 0); // 25 вересня 2025
+const endDate = new Date(2026, 1, 10, 23, 59, 59); // 10 лютого 2026
+
+function updateTime() {
+  const now = new Date();
+  const current = now > endDate ? endDate : now; // не рахувати далі 10 лютого
+  const diff = current - startDate;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+
+  const timeEl = document.getElementById("time");
+  timeEl.innerHTML = `Ми були разом <b>${days}</b> днів 🤍<br><span style="font-size:0.8em;opacity:0.7;">(зупинилось 10.02.26)</span>`;
+}
+
+updateTime();
+</script>
+
+</body>
+</html>
